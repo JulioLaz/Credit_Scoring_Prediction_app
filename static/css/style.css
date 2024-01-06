@@ -182,6 +182,8 @@ span {
       display:flex;
       flex-direction: column;
       align-items: center;
+      margin-bottom: .8rem;
+      font-size: .4rem;
     } 
     p{
         /* min-width: 1000px; */
@@ -189,7 +191,7 @@ span {
 
     }
     .btn_volver{
-        min-width: 94%;
+        min-width: 100%;
 
     }
     .autor{
@@ -210,12 +212,13 @@ span {
 
     }
     label{
-        font-size: 1.2rem;
-        font-weight: 500;
+        font-size: 1rem;
+        font-weight: 50;
     }
-    .form-group{
-        margin-bottom: .8rem;
+    .form-select {
+        font-size: .9rem;
     }
+
   }
 
 .grafica {
