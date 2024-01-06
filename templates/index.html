@@ -8,6 +8,8 @@
       <link rel="stylesheet" href="../static/css/reset.css" />
       <link rel="stylesheet" href="../static/css/style.css" />   
       <link rel="stylesheet" href="sweetalert2.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+
       <title>Formulario de Predicción</title>
    </head>
 
@@ -267,7 +269,7 @@
                <option value="1">casado/a</option>
             </select>
          </div>
-         <button type="submit" class="btn btn-outline-dark btn_title">EVALUAR LA CONDICIÓN DEL CLIENTE</button>
+         <button type="submit" class="btn btn-outline-dark btn_title" id="submitButton">EVALUAR LA CONDICIÓN DEL CLIENTE</button>
       </form>
    </div>
 
@@ -304,6 +306,11 @@
          Swal.close();
       }, 1800);
    }
+
+   function showSpinner() {
+         const submitButton = document.getElementById('submitButton');
+         submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+      }   
 </script>
 
 </body>
