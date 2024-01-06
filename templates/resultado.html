@@ -14,20 +14,18 @@
 
 <div class="container mt-5">
     <h1 class="h1">Resultado de Predicción</h1>
-    <!-- <h2>{{ resultado }}</h2> -->   
 </div>
+
 <div class="canva">
     <div class="centrado">
         
         <div class="grafica ">
-            <canvas class="grafico" id="grafica" width="1000" height="470" ></canvas>
+            <canvas class="grafico" id="grafica" width="1000" height="440" ></canvas>
         </div>
         
     </div>
-    <div class="">
-        <p>La predicción tiene un acierto del <span>{{acierto}}% </span></p>
-    </div>
-        <a href="{{ url_for('index') }}" class="btn btn-outline-dark btn_title btn_volver">Verificar nuevo cliente</a>
+    <p class="" >Confianza de la predicción: <span>{{acierto}}% </span></p>
+    <a href="{{ url_for('index') }}" class="btn btn-outline-dark btn_title btn_volver">Verificar nuevo cliente</a>
 </div>
 
 <script>
