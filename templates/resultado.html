@@ -1,0 +1,46 @@
+<!-- templates/resultado.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Resultado de Predicción</title>
+    <link rel="stylesheet" href="../static/css/reset.css" />
+    <link rel="stylesheet" href="../static/css/style.css" />   
+ </head>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1>Resultado de Predicción</h1>
+    <!-- <h2>{{ resultado }}</h2> -->   
+</div>
+<div class="canva">
+    <div class="centrado">
+        
+        <div class="grafica ">
+            <canvas class="grafico" id="grafica" width="1000" height="470" ></canvas>
+        </div>
+        
+    </div>
+    <div class="">
+        <p>La predicción tiene un acierto del <span>{{acierto}}% </span></p>
+    </div>
+        <a href="{{ url_for('index') }}" class="btn btn-outline-dark btn_title">Verificar nuevo cliente</a>
+</div>
+
+<script>
+    const canvas1 = document.getElementById("grafica");
+    const ctx1 = canvas1.getContext("2d");
+
+    let grafica = new Image();
+    grafica.src = "data:image/png;base64, {{Grafica}}";
+
+    grafica.onload = function () {
+      ctx1.drawImage(grafica, 0, 0);
+    }
+  </script>
+
+</body>
+</html>
