@@ -1,318 +1,407 @@
 <!DOCTYPE html>
 <html lang="es">
-   
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-      <link rel="stylesheet" href="../static/css/reset.css" />
-      <link rel="stylesheet" href="../static/css/style.css" />   
-      <link rel="stylesheet" href="sweetalert2.min.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../static/css/reset.css" />
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <link rel="stylesheet" href="sweetalert2.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    />
 
-      <title>Formulario de Predicción</title>
-   </head>
+    <title>Formulario de Predicción</title>
+  </head>
 
-<body>
-
-   <div class="container mt-5">
+  <body>
+    <div class="container mt-5">
       <div class="h1">
-         <h1>CREDIT SCORING PREDITION</h1>
-         <div class="autor">
-            <h2>By: Julio A. Lazarte</h2>
-            <a href="https://www.linkedin.com/in/julio-lazarte-developer/", target="_blank">
-               <img src="../static/linkedin.svg" alt="linkedin">
-            </a>
-            <a href="javascript:void(0);" onclick="enviarCorreo()">
-               <img src="../static/email.svg" alt="">
-            </a>            
-         </div>
+        <h1>CREDIT SCORING PREDITION</h1>
+        <div class="autor">
+          <h2>By: Julio A. Lazarte</h2>
+          <a
+            href="https://www.linkedin.com/in/julio-lazarte-developer/"
+            ,
+            target="_blank"
+          >
+            <img src="../static/linkedin.svg" alt="linkedin" />
+          </a>
+          <a href="javascript:void(0);" onclick="enviarCorreo()">
+            <img src="../static/email.svg" alt="" />
+          </a>
+        </div>
       </div>
-      <h3 class="clickme">Ingresa los datos del Cliente para verificar Default</h3>
+      <h3 class="clickme">
+        Ingresa los datos del Cliente para verificar Default
+      </h3>
       <form method="post" action="{{ url_for('predecir') }}">
-         <div class="form-group">
-            <label for="Estado_cuenta">Estado de Cuenta (Marco Danés):</label>
-            <!-- <input type="text" class="form-control" id="Estado_cuenta" name="Estado_cuenta" required> -->
-            <select class="form-select" id="Estado_cuenta" name="Estado_cuenta" required>
-               <option value="1">0 DM</option>
-               <option value="2">menor a 200 DM</option>
-               <option value="3">mayor a 200 DM</option>
-               <option value="4">no checking account</option>
-            </select>
-         </div>
-         <div class="form-group">
-            <label for="Historial_credito">Historial de crédito:</label>
-            <!-- <input type="text" class="form-control" id="Historial_credito" name="Historial_credito" required> -->
-            <select class="form-select" id="Historial_credito" name="Historial_credito" required>
-               <option value="1">sin creditos</option>
-               <option value="2">creditos al día</option>
-               <option value="2">cuenta al día</option>
-               <option value="2">hubo deuda</option>
-               <option value="5">cuenta crítica</option>
-            </select>
-         </div>
+        <div class="form-group">
+          <label for="Estado_cuenta">Estado de Cuenta (Marco Danés):</label>
+          <!-- <input type="text" class="form-control" id="Estado_cuenta" name="Estado_cuenta" required> -->
+          <select
+            class="form-select"
+            id="Estado_cuenta"
+            name="Estado_cuenta"
+            required
+          >
+            <option value="1">0 DM</option>
+            <option value="2">menor a 200 DM</option>
+            <option value="3">mayor a 200 DM</option>
+            <option value="4">no checking account</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="Historial_credito">Historial de crédito:</label>
+          <!-- <input type="text" class="form-control" id="Historial_credito" name="Historial_credito" required> -->
+          <select
+            class="form-select"
+            id="Historial_credito"
+            name="Historial_credito"
+            required
+          >
+            <option value="1">sin creditos</option>
+            <option value="2">creditos al día</option>
+            <option value="2">cuenta al día</option>
+            <option value="2">hubo deuda</option>
+            <option value="5">cuenta crítica</option>
+          </select>
+        </div>
 
-         <div class="form-group">
-            <label for="Proposito">Propósito:</label>
-            <!-- <input type="text" class="form-control" id="Proposito" name="Proposito" required> -->
-            <select class="form-select" id="Proposito" name="Proposito" required>
-               <option value="1">nuevo automovil</option>
-               <option value="2">usado automovil</option>
-               <option value="3">repación/otros</option>
-               <option value="4">radio/tv</option>
-               <option value="5">ampliación casa</option>
-               <option value="10">negocios</option>
-            </select>
-         </div>
+        <div class="form-group">
+          <label for="Proposito">Propósito:</label>
+          <!-- <input type="text" class="form-control" id="Proposito" name="Proposito" required> -->
+          <select class="form-select" id="Proposito" name="Proposito" required>
+            <option value="1">nuevo automovil</option>
+            <option value="2">usado automovil</option>
+            <option value="3">repación/otros</option>
+            <option value="4">radio/tv</option>
+            <option value="5">ampliación casa</option>
+            <option value="10">negocios</option>
+          </select>
+        </div>
 
-         <div class="form-group">
-            <label for="Ahorros">Ahorros:</label>
-            <!-- <input type="text" class="form-control" id="Ahorros" name="Ahorros" required> -->
-            <select class="form-select" id="Ahorros" name="Ahorros" required>
-               <option value="1">no posee no se sabe</option>
-               <option value="2">mayor a 1000 MD</option>
-               <option value="3">entre 500 y 1000 MD</option>
-               <option value="4">entre 100 y 500 MD</option>
-               <option value="5">menor a 100 MD</option>
-            </select>
-         </div>
+        <div class="form-group">
+          <label for="Ahorros">Ahorros:</label>
+          <!-- <input type="text" class="form-control" id="Ahorros" name="Ahorros" required> -->
+          <select class="form-select" id="Ahorros" name="Ahorros" required>
+            <option value="1">no posee no se sabe</option>
+            <option value="2">mayor a 1000 MD</option>
+            <option value="3">entre 500 y 1000 MD</option>
+            <option value="4">entre 100 y 500 MD</option>
+            <option value="5">menor a 100 MD</option>
+          </select>
+        </div>
 
-         <div class="form-group">
-            <label for="Empleo_actual">Empleo actual:</label>
-            <!-- <input type="text" class="form-control" id="Empleo_actual" name="Empleo_actual" required> -->
-            <select class="form-select" id="Empleo_actual" name="Empleo_actual" required>
-               <option value="1">mayor a 7 años</option>
-               <option value="2">entre 4 y 7 años</option>
-               <option value="3">entre 1 y 4 años</option>
-               <option value="4">menor a 1 año</option>
-               <option value="5">desempleado</option>
-            </select>
-         </div>
+        <div class="form-group">
+          <label for="Empleo_actual">Empleo actual:</label>
+          <!-- <input type="text" class="form-control" id="Empleo_actual" name="Empleo_actual" required> -->
+          <select
+            class="form-select"
+            id="Empleo_actual"
+            name="Empleo_actual"
+            required
+          >
+            <option value="1">mayor a 7 años</option>
+            <option value="2">entre 4 y 7 años</option>
+            <option value="3">entre 1 y 4 años</option>
+            <option value="4">menor a 1 año</option>
+            <option value="5">desempleado</option>
+          </select>
+        </div>
 
-         <div class="form-group">
-            <label for="Cuota_como_porcentaje_ingreso">Cuota como porcentaje de ingreso:</label>
-            <!-- <input type="text" class="form-control" id="Cuota_como_porcentaje_ingreso" name="Cuota_como_porcentaje_ingreso" required> -->
-            <select class="form-select" id="Cuota_como_porcentaje_ingreso" name="Cuota_como_porcentaje_ingreso"
-               required>
-               <option value="1">una</option>
-               <option value="2">dos</option>
-               <option value="3">tres</option>
-               <option value="4">cuatro</option>
-            </select>
-         </div>
+        <div class="form-group">
+          <label for="Cuota_como_porcentaje_ingreso"
+            >Cuota como porcentaje de ingreso:</label
+          >
+          <!-- <input type="text" class="form-control" id="Cuota_como_porcentaje_ingreso" name="Cuota_como_porcentaje_ingreso" required> -->
+          <select
+            class="form-select"
+            id="Cuota_como_porcentaje_ingreso"
+            name="Cuota_como_porcentaje_ingreso"
+            required
+          >
+            <option value="1">una</option>
+            <option value="2">dos</option>
+            <option value="3">tres</option>
+            <option value="4">cuatro</option>
+          </select>
+        </div>
 
-         <div class="form-group">
-            <label for="Otros_deudores">Otros deudores:</label>
-            <!-- <input type="text" class="form-control" id="Otros_deudores" name="Otros_deudores" required> -->
-            <select class="form-select" id="Otros_deudores" name="Otros_deudores" required>
-               <option value="1">no posee</option>
-               <option value="2">cosolicitante</option>
-               <option value="3">garante</option>
-            </select>
-         </div>
+        <div class="form-group">
+          <label for="Otros_deudores">Otros deudores:</label>
+          <!-- <input type="text" class="form-control" id="Otros_deudores" name="Otros_deudores" required> -->
+          <select
+            class="form-select"
+            id="Otros_deudores"
+            name="Otros_deudores"
+            required
+          >
+            <option value="1">no posee</option>
+            <option value="2">cosolicitante</option>
+            <option value="3">garante</option>
+          </select>
+        </div>
 
-         <div class="form-group">
-            <label for="Residencia_actual_desde">Residencia actual desde:</label>
-            <!-- <input type="text" class="form-control" id="Residencia_actual_desde" name="Residencia_actual_desde" required> -->
-            <select class="form-select" id="Residencia_actual_desde" name="Residencia_actual_desde" required>
-               <option value="1">uno</option>
-               <option value="2">dos</option>
-               <option value="3">tres</option>
-               <option value="4">cuatro</option>
-            </select>
-         </div>
+        <div class="form-group">
+          <label for="Residencia_actual_desde">Residencia actual desde:</label>
+          <!-- <input type="text" class="form-control" id="Residencia_actual_desde" name="Residencia_actual_desde" required> -->
+          <select
+            class="form-select"
+            id="Residencia_actual_desde"
+            name="Residencia_actual_desde"
+            required
+          >
+            <option value="1">uno</option>
+            <option value="2">dos</option>
+            <option value="3">tres</option>
+            <option value="4">cuatro</option>
+          </select>
+        </div>
 
-         <div class="form-group">
-            <label for="Propiedad">Propiedad:</label>
-            <!-- <input type="text" class="form-control" id="Propiedad" name="Propiedad" required> -->
-            <select class="form-select" id="Propiedad" name="Propiedad" required>
-               <option value="1">bienes raíces</option>
-               <option value="2">acuerdo/seg. vida</option>
-               <option value="3">automóvil u otro</option>
-               <option value="4">desconocido/no posee</option>
-            </select>
-         </div>
+        <div class="form-group">
+          <label for="Propiedad">Propiedad:</label>
+          <!-- <input type="text" class="form-control" id="Propiedad" name="Propiedad" required> -->
+          <select class="form-select" id="Propiedad" name="Propiedad" required>
+            <option value="1">bienes raíces</option>
+            <option value="2">acuerdo/seg. vida</option>
+            <option value="3">automóvil u otro</option>
+            <option value="4">desconocido/no posee</option>
+          </select>
+        </div>
 
-         <div class="form-group">
-            <label for="Otros_planes_cuotas">Otros planes cuotas:</label>
-            <!-- <input type="text" class="form-control" id="Otros_planes_cuotas" name="Otros_planes_cuotas" required> -->
-            <select class="form-select" id="Otros_planes_cuotas" name="Otros_planes_cuotas" required>
-               <option value="1">banco</option>
-               <option value="2">Teindas</option>
-               <option value="3">ninguno</option>
-            </select>
-         </div>
+        <div class="form-group">
+          <label for="Otros_planes_cuotas">Otros planes cuotas:</label>
+          <!-- <input type="text" class="form-control" id="Otros_planes_cuotas" name="Otros_planes_cuotas" required> -->
+          <select
+            class="form-select"
+            id="Otros_planes_cuotas"
+            name="Otros_planes_cuotas"
+            required
+          >
+            <option value="1">banco</option>
+            <option value="2">Teindas</option>
+            <option value="3">ninguno</option>
+          </select>
+        </div>
 
-         <div class="form-group">
-            <label for="Vivienda">Vivienda:</label>
-            <!-- <input type="text" class="form-control" id="Vivienda" name="Vivienda" required> -->
-            <select class="form-select" id="Vivienda" name="Vivienda" required>
-               <option value="1">alquiler</option>
-               <option value="2">propia</option>
-               <option value="3">prestada</option>
-            </select>
-         </div>
+        <div class="form-group">
+          <label for="Vivienda">Vivienda:</label>
+          <!-- <input type="text" class="form-control" id="Vivienda" name="Vivienda" required> -->
+          <select class="form-select" id="Vivienda" name="Vivienda" required>
+            <option value="1">alquiler</option>
+            <option value="2">propia</option>
+            <option value="3">prestada</option>
+          </select>
+        </div>
 
-         <div class="form-group">
-            <label for="Creditos_en_banco">Creditos en banco:</label>
-            <!-- <input type="text" class="form-control" id="Creditos_en_banco" name="Creditos_en_banco" required> -->
-            <select class="form-select" id="Creditos_en_banco" name="Creditos_en_banco" required>
-               <option value="1">uno</option>
-               <option value="2">dos</option>
-               <option value="3">tres</option>
-            </select>
-         </div>
+        <div class="form-group">
+          <label for="Creditos_en_banco">Creditos en banco:</label>
+          <!-- <input type="text" class="form-control" id="Creditos_en_banco" name="Creditos_en_banco" required> -->
+          <select
+            class="form-select"
+            id="Creditos_en_banco"
+            name="Creditos_en_banco"
+            required
+          >
+            <option value="1">uno</option>
+            <option value="2">dos</option>
+            <option value="3">tres</option>
+          </select>
+        </div>
 
-         <div class="form-group">
-            <label for="Trabajo">Trabajo:</label>
-            <!-- <input type="text" class="form-control" id="Trabajo" name="Trabajo" required> -->
-            <select class="form-select" id="Trabajo" name="Trabajo" required>
-               <option value="1">desempleados</option>
-               <option value="2">no cualificado</option>
-               <option value="3">empleado calificado</option>
-               <option value="4">altamente cualificado</option>
-            </select>
-         </div>
+        <div class="form-group">
+          <label for="Trabajo">Trabajo:</label>
+          <!-- <input type="text" class="form-control" id="Trabajo" name="Trabajo" required> -->
+          <select class="form-select" id="Trabajo" name="Trabajo" required>
+            <option value="1">desempleados</option>
+            <option value="2">no cualificado</option>
+            <option value="3">empleado calificado</option>
+            <option value="4">altamente cualificado</option>
+          </select>
+        </div>
 
-         <div class="form-group">
-            <label for="Personas_a_cargo">Personas a cargo:</label>
-            <!-- <input type="text" class="form-control" id="Personas_a_cargo" name="Personas_a_cargo" required> -->
-            <select class="form-select" id="Personas_a_cargo" name="Personas_a_cargo" required>
-               <option value="1">no</option>
-               <option value="2">si</option>
-            </select>
-         </div>
+        <div class="form-group">
+          <label for="Personas_a_cargo">Personas a cargo:</label>
+          <!-- <input type="text" class="form-control" id="Personas_a_cargo" name="Personas_a_cargo" required> -->
+          <select
+            class="form-select"
+            id="Personas_a_cargo"
+            name="Personas_a_cargo"
+            required
+          >
+            <option value="1">no</option>
+            <option value="2">si</option>
+          </select>
+        </div>
 
-         <div class="form-group">
-            <label for="Telefono">Telefono:</label>
-            <!-- <input type="text" class="form-control" id="Telefono" name="Telefono" required> -->
-            <select class="form-select" id="Telefono" name="Telefono" required>
-               <option value="0">no</option>
-               <option value="1">si</option>
-            </select>
-         </div>
+        <div class="form-group">
+          <label for="Telefono">Telefono:</label>
+          <!-- <input type="text" class="form-control" id="Telefono" name="Telefono" required> -->
+          <select class="form-select" id="Telefono" name="Telefono" required>
+            <option value="0">no</option>
+            <option value="1">si</option>
+          </select>
+        </div>
 
-         <div class="form-group">
-            <label for="Trabajador_extranjero">Trabajador extranjero:</label>
-            <!-- <input type="text" class="form-control" id="Trabajador_extranjero" name="Trabajador_extranjero" required> -->
-            <select class="form-select" id="Trabajador_extranjero" name="Trabajador_extranjero" required>
-               <option value="0">no</option>
-               <option value="1">si</option>
-            </select>
-         </div>
+        <div class="form-group">
+          <label for="Trabajador_extranjero">Trabajador extranjero:</label>
+          <!-- <input type="text" class="form-control" id="Trabajador_extranjero" name="Trabajador_extranjero" required> -->
+          <select
+            class="form-select"
+            id="Trabajador_extranjero"
+            name="Trabajador_extranjero"
+            required
+          >
+            <option value="0">no</option>
+            <option value="1">si</option>
+          </select>
+        </div>
 
-         <div class="form-group">
-            <label for="Rango_edad">Rango de edad:</label>
-            <!-- <input type="text" class="form-control" id="Rango_edad" name="Rango_edad" required> -->
-            <select class="form-select" id="Rango_edad" name="Rango_edad" required>
-               <option value="1">18 a 30 años</option>
-               <option value="2">30 a 40 años</option>
-               <option value="3">40 a 50 años</option>
-               <option value="4">50 a 60 años</option>
-               <option value="5">más de 60 años</option>
-            </select>
-         </div>
+        <div class="form-group">
+          <label for="Rango_edad">Rango de edad:</label>
+          <!-- <input type="text" class="form-control" id="Rango_edad" name="Rango_edad" required> -->
+          <select
+            class="form-select"
+            id="Rango_edad"
+            name="Rango_edad"
+            required
+          >
+            <option value="1">18 a 30 años</option>
+            <option value="2">30 a 40 años</option>
+            <option value="3">40 a 50 años</option>
+            <option value="4">50 a 60 años</option>
+            <option value="5">más de 60 años</option>
+          </select>
+        </div>
 
-         <div class="form-group">
-            <label for="Rango_valor_credito">Rango de valor del credito:</label>
-            <!-- <input type="text" class="form-control" id="Rango_valor_credito" name="Rango_valor_credito" required> -->
-            <select class="form-select" id="Rango_valor_credito" name="Rango_valor_credito" required>
-               <option value="1">menor a 1K</option>
-               <option value="2">entre 1K y 2K</option>
-               <option value="3">entre 2K y 3K</option>
-               <option value="4">entre 3K y 4K</option>
-               <option value="5">entre 4K y 5K</option>
-               <option value="6">entre 5K y 6K</option>
-               <option value="7">entre 6K y 7K</option>
-               <option value="8">entre 7K y 8K</option>
-               <option value="9">entre 8K y 9K</option>
-               <option value="9">entre 9K y 10K</option>
-               <option value="9">entre 10K y 11K</option>
-               <option value="12">entre 11K y 12K</option>
-               <option value="13">entre 12K y 13K</option>
-               <option value="14">entre 13K y 14K</option>
-               <option value="15">entre 14K y 15K</option>
-               <option value="14">entre 15K y 16K</option>
-               <option value="14">entre 16K y 17K</option>
-               <option value="14">entre 17K y 18K</option>
-               <option value="14">entre 18K y 19K</option>
-            </select>
-         </div>
+        <div class="form-group">
+          <label for="Rango_valor_credito">Rango de valor del credito:</label>
+          <!-- <input type="text" class="form-control" id="Rango_valor_credito" name="Rango_valor_credito" required> -->
+          <select
+            class="form-select"
+            id="Rango_valor_credito"
+            name="Rango_valor_credito"
+            required
+          >
+            <option value="1">menor a 1K</option>
+            <option value="2">entre 1K y 2K</option>
+            <option value="3">entre 2K y 3K</option>
+            <option value="4">entre 3K y 4K</option>
+            <option value="5">entre 4K y 5K</option>
+            <option value="6">entre 5K y 6K</option>
+            <option value="7">entre 6K y 7K</option>
+            <option value="8">entre 7K y 8K</option>
+            <option value="9">entre 8K y 9K</option>
+            <option value="9">entre 9K y 10K</option>
+            <option value="9">entre 10K y 11K</option>
+            <option value="12">entre 11K y 12K</option>
+            <option value="13">entre 12K y 13K</option>
+            <option value="14">entre 13K y 14K</option>
+            <option value="15">entre 14K y 15K</option>
+            <option value="14">entre 15K y 16K</option>
+            <option value="14">entre 16K y 17K</option>
+            <option value="14">entre 17K y 18K</option>
+            <option value="14">entre 18K y 19K</option>
+          </select>
+        </div>
 
-         <div class="form-group">
-            <label for="Rango_plazos_credito">Rango de plazos del credito:</label>
-            <!-- <input type="text" class="form-control" id="Rango_plazos_credito" name="Rango_plazos_credito" required> -->
-            <select class="form-select" id="Rango_plazos_credito" name="Rango_plazos_credito" required>
-               <option value="1">1 a 12 meses</option>
-               <option value="2">12 a 24 meses</option>
-               <option value="3">24 a 36 meses</option>
-               <option value="4">36 a 48 meses</option>
-               <option value="5">48 a 60 meses</option>
-               <option value="6">60 a 72 meses</option>
-            </select>
-         </div>
+        <div class="form-group">
+          <label for="Rango_plazos_credito">Rango de plazos del credito:</label>
+          <!-- <input type="text" class="form-control" id="Rango_plazos_credito" name="Rango_plazos_credito" required> -->
+          <select
+            class="form-select"
+            id="Rango_plazos_credito"
+            name="Rango_plazos_credito"
+            required
+          >
+            <option value="1">1 a 12 meses</option>
+            <option value="2">12 a 24 meses</option>
+            <option value="3">24 a 36 meses</option>
+            <option value="4">36 a 48 meses</option>
+            <option value="5">48 a 60 meses</option>
+            <option value="6">60 a 72 meses</option>
+          </select>
+        </div>
 
-         <div class="form-group">
-            <label for="Sexo">Sexo:</label>
-            <!-- <input type="text" class="form-control" id="Sexo" name="Sexo" required> -->
-            <select class="form-select" id="Sexo" name="Sexo" required>
-               <option value="0">Varón</option>
-               <option value="1">Mujer</option>
-            </select>
-         </div>
+        <div class="form-group">
+          <label for="Sexo">Sexo:</label>
+          <!-- <input type="text" class="form-control" id="Sexo" name="Sexo" required> -->
+          <select class="form-select" id="Sexo" name="Sexo" required>
+            <option value="0">Varón</option>
+            <option value="1">Mujer</option>
+          </select>
+        </div>
 
-         <div class="form-group">
-            <label for="Estado_civil">Estado civil:</label>
-            <!-- <input type="text" class="form-control" id="Estado_civil" name="Estado_civil" required> -->
-            <select class="form-select" id="Estado_civil" name="Estado_civil" required>
-               <option value="0">soltero/a</option>
-               <option value="1">casado/a</option>
-            </select>
-         </div>
-         <button type="submit" class="btn btn-outline-dark btn_title" id="submitButton" onclick="showSpinner()>EVALUAR LA CONDICIÓN DEL CLIENTE</button>
+        <div class="form-group">
+          <label for="Estado_civil">Estado civil:</label>
+          <!-- <input type="text" class="form-control" id="Estado_civil" name="Estado_civil" required> -->
+          <select
+            class="form-select"
+            id="Estado_civil"
+            name="Estado_civil"
+            required
+          >
+            <option value="0">soltero/a</option>
+            <option value="1">casado/a</option>
+          </select>
+        </div>
+        <button
+          type="submit"
+          class="btn btn-outline-dark btn_title"
+          id="submitButton"
+          onclick="showSpinner()"
+        >
+          EVALUAR LA CONDICIÓN DEL CLIENTE
+        </button>
       </form>
-   </div>
+    </div>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      function showSpinner() {
+        const submitButton = document.getElementById("submitButton");
+        submitButton.innerHTML =
+          '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+      }
+    </script>
+    <script type="text/javascript">
+      function enviarCorreo() {
+        var correo = "julioalbertolazarte@gmail.com";
 
-<script type="text/javascript">
-   function enviarCorreo() {
-      var correo = 'julioalbertolazarte@gmail.com';
+        const swalWithButton = Swal.mixin({
+          customClass: {
+            confirmButton: "btn btn-outline-dark",
+          },
+          buttonsStyling: false,
+        });
 
-      const swalWithButton = Swal.mixin({
-         customClass: {
-            confirmButton: 'btn btn-outline-dark',
-         },
-         buttonsStyling: false,
-      });
-
-      // Mostrar un alert con el correo y un botón de copiar
-      swalWithButton.fire({
-         title: 'Dirección de correo',
-         html: `<div class='correo'>${correo}</div>`,
-         confirmButtonText: 'Copiar',
-         preConfirm: () => {
+        // Mostrar un alert con el correo y un botón de copiar
+        swalWithButton.fire({
+          title: "Dirección de correo",
+          html: `<div class='correo'>${correo}</div>`,
+          confirmButtonText: "Copiar",
+          preConfirm: () => {
             // Copiar al portapapeles:
-            const el = document.createElement('textarea');
+            const el = document.createElement("textarea");
             el.value = correo;
             document.body.appendChild(el);
             el.select();
-            document.execCommand('copy');
+            document.execCommand("copy");
             document.body.removeChild(el);
-         }
-      });
+          },
+        });
 
-      setTimeout(() => {
-         Swal.close();
-      }, 1800);
-   }
-
-   function showSpinner() {
-         const submitButton = document.getElementById('submitButton');
-         submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-      }   
-</script>
-
-</body>
-
+        setTimeout(() => {
+          Swal.close();
+        }, 1800);
+      }
+    </script>
+  </body>
 </html>
