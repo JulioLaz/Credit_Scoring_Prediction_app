@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import pandas as pd
 from model_RForest import predecir_cliente,reloj_default
+from visitas import contar_visitas
 
 def crear_app():
 
@@ -9,7 +10,8 @@ def crear_app():
 
     @app.route('/')
     def index():
-        return render_template('index.html')
+        total_visitas = contar_visitas()
+        return render_template('index.html', total_visitas=total_visitas)
 
     @app.route('/predecir', methods=['POST'])
     def predecir():
@@ -43,7 +45,6 @@ def crear_app():
             grafica= reloj_default(resultado[1],resultado[2])
 
             return render_template('resultado.html', resultado=(resultado[0],resultado[1][0],resultado[2]), Grafica=grafica,acierto=resultado[3])
-            # return render_template('resultado.html', resultado=resultado[0], grafica=grafica)
     return app
 
 if __name__ == '__main__':
